@@ -14,7 +14,7 @@ public class testController {
     @ApiOperation(value = "get方法，返回常量",notes = "测试方法")
     @RequestMapping(value="/say",method = RequestMethod.GET)
     public String test(){
-        return "hello,didi!";
+        return "hello,臭弟弟!";
     }
 
 }
