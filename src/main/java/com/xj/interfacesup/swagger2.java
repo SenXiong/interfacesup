@@ -20,7 +20,7 @@ public class swagger2 {
     }
 
     private ApiInfo apiInfo(){
-        return new ApiInfoBuilder().title("swagger test").description("接口提供by xj").termsOfServiceUrl("http://localhost:8080/")
-                .contact("xiongjun").version("1.0.0").build();
+        return new ApiInfoBuilder().title("swagger test").description("接口提供").termsOfServiceUrl("www.baidu.com")
+                .version("1.0.0").build();
     }
 }
