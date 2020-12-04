@@ -19,6 +19,8 @@ public class testController {
     @ApiOperation(value = "post方法，返回实体类",notes = "post测试方法" )
     @PostMapping(value="/postTest")
     public Person postTest(@RequestBody Person person){
+        person.setAge(person.getAge()+1);
+        person.setName(person.getName().concat("A"));
         return person;
     }
 
