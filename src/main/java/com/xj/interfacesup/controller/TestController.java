@@ -1,5 +1,6 @@
 package com.xj.interfacesup.controller;
 
+import com.alibaba.druid.filter.config.ConfigTools;
 import com.xj.interfacesup.Bean.Person;
 import com.xj.interfacesup.server.TestServer;
 import io.swagger.annotations.Api;
@@ -27,6 +28,13 @@ public class TestController {
         person.setAge(testServer.add(person.getAge()));
         person.setName(person.getName().concat("A"));
         return person;
+    }
+
+    public static void main(String[] args) throws Exception {
+        String password = "123";
+        String encodePassword = ConfigTools.encrypt(password);
+        System.out.println("加密: " + encodePassword);
+        System.out.println("解密: " + ConfigTools.decrypt(encodePassword));
     }
 
 }
