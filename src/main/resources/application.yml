@@ -5,15 +5,12 @@ logging:
   config: classpath:log4j2-spring.xml
 
 spring:
+  profiles:
+    active: dev
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:mysql://47.113.203.233:3306/test_dev
-    username: manager
-    password: Xi/9g6Ymt9pdW5ZaU1bXA9PNNIEaN0jXGd6ROj5S2HA1JpIzB3rwkL/I529AqKZ+OY8qJzmAjkXaREuPD6Loyg==
     driver-class-name: com.mysql.jdbc.Driver
     druid:
-      connection-properties: config.decrypt=true
       filter:
         config:
           enabled: true
-      filters: config

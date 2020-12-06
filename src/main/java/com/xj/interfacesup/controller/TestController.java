@@ -1,12 +1,11 @@
 package com.xj.interfacesup.controller;
 
 import com.alibaba.druid.filter.config.ConfigTools;
-import com.xj.interfacesup.Bean.Person;
+import com.xj.interfacesup.bean.User;
 import com.xj.interfacesup.server.TestServer;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.*;
 
 @Api(value = "测试Api")
@@ -24,17 +23,21 @@ public class TestController {
 
     @ApiOperation(value = "post方法，返回实体类",notes = "post测试方法" )
     @PostMapping(value="/postTest")
-    public Person postTest(@RequestBody Person person){
-        person.setAge(testServer.add(person.getAge()));
-        person.setName(person.getName().concat("A"));
-        return person;
+    public User postTest(@RequestBody Long id) {
+        return testServer.select(id);
     }
 
-    public static void main(String[] args) throws Exception {
-        String password = "123";
-        String encodePassword = ConfigTools.encrypt(password);
-        System.out.println("加密: " + encodePassword);
-        System.out.println("解密: " + ConfigTools.decrypt(encodePassword));
+    public static void main(String[] args) {
+        try {
+            String password = "123";
+            String[] arr = ConfigTools.genKeyPair(512);
+
+            // System.out.println("privateKey:" + arr[0]);
+            System.out.println("publicKey:" + arr[1]);
+            System.out.println("password:" + ConfigTools.encrypt(arr[0], password));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }
